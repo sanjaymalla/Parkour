@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpForce = 16f;
     Rigidbody2D rb;
     bool isGrounded;
-    public int PlayerLife = 3;
+    //public int PlayerLife = 3;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpForce = 16f;
     Rigidbody2D rb;
     bool isGrounded;
+    Transform currentCheckpoint;
     //public int PlayerLife = 3;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -29,7 +30,15 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.transform.tag == "Checkpoint")
+        {
+            currentCheckpoint = collision.transform;
+            collision.GetComponent<Collider2D>().enabled = false;
+
+        }
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -43,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
             PlayerRespawn spawner = FindFirstObjectByType<PlayerRespawn>();
             if (spawner != null)
             {
-                spawner.Respawn();
+                spawner.Respawn(currentCheckpoint);
             }
 
         }

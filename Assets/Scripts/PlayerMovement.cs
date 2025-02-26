@@ -21,8 +21,8 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded) { 
             float moveX = Input.GetAxis("Horizontal");
             rb.linearVelocity = new Vector2(moveX * moveSpeed, rb.linearVelocity.y);
-            bool jump = Input.GetButtonDown("Jump");
             
+            bool jump = Input.GetButtonDown("Jump");
             if (jump)
             { 
                 rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
